@@ -1,0 +1,24 @@
+{
+  "name": "dots-frontend",
+  "version": "1.0.0",
+  "description": "Front end nodejs app for dots demo",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ndachel/dots-frontend.git"
+  },
+  "author": "Nels Dachel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ndachel/dots-frontend/issues"
+  },
+  "homepage": "https://github.com/ndachel/dots-frontend#readme",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "express": "^4.13.4"
+  }
+}
