@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <title></title>
+  <style>
+      body {background-color: #232937; margin: 0 auto; max-width: 700px; background-color: #232937; 
+            padding: 15px; 
+            font-family:Source Sans Pro, Arial,Baskerville,monospace; color: #fff;
+            font-weight: 300; size: 15.4px;}
+     .top {font-family: Source Sans Pro; font-size: 46.2px; font-weight: bold; text-align: center}
+     .canvas {margin: 0 auto; border: 1px solid white; width: 400px; height: 400px;cursor: none}
+     .player1 {margin: 0 auto; font-family: Source Sans Pro; color: #27C97B; width: 400px;
+               font-size: 46.2px; font-weight: bold; text-align: center}
+               
+     .player2 {margin: 0 auto; font-family: Source Sans Pro; color: #00BCD4; width: 400px;
+               font-size: 46.2px; font-weight: bold; text-align: center}
+  </style>
+  <script src="./objects.js"></script>
+  <script src="./painters.js"></script>
+  <script src="./mouseEvents.js"></script>
+  <script src="./helpers.js"></script>
+  <script src="./board.js"></script>
+ </head>
+<body onload="setInterval(loop,1000/30);">  
+<div>
+  <div class="top">DOTS</div>
+  <div id="container" class="canvas" onclick="click()"></div>
+  <div id="player1" class="player1"></div>
+  <div id="player2" class="player2"></div>
+</div>
+  
+<script type="text/javascript">
+var ptype = ["c","c"];
+var cdelay = 0;
+var cTurn = false;
+var player = 0;
+var score = [0,0];
+var click1 = new Point (-1, -1);
+var click2 = new Point (-1, -1);
+var pointArr = new Array();
+var squareArr = new Array();
+var n = 13;
+var tryDepth = n;//((n-1)*n) - ((score[0] + score[1]) * 4); 
+var padding = 25;// - Math.floor(n/2);
+var spacing = 380;
+var mousePos;
+var container, canvas, context;
+var w = 400; var h = 400;
+var winner = -1;
+init();
+function loop() {
+  if (cTurn == false){
+    drawDots();
+    drawLines();
+    paintScore();
+    paintWinner();
+  }
+}
+    
+function init() {
+  container = document.getElementById('container');
+  canvas = document.createElement("canvas");
+  canvas.width = w;
+  canvas.height = h;
+  container.appendChild(canvas);
+  context = canvas.getContext("2d");
+  context.translate(0.5, 0.5);
+  context.fillStyle = "#282E3E";
+  context.fillRect(0, 0, w, h);
+  canvas.addEventListener('mousemove', mouseMove, false);
+  canvas.addEventListener('click', mouseClick, false);
+  createBoard(n);
+}
+</script>
+</body>
+</html>
